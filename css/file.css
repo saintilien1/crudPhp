@@ -1,0 +1,182 @@
+ .form-contro {
+     display: block;
+     width: 100%;
+     padding: .375rem .75rem;
+     font-size: 1rem;
+     line-height: 1.5;
+     color: #495057;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid #ced4da;
+     border-radius: .25rem;
+     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+ }
+ 
+ @media screen and (prefers-reduced-motion:reduce) {
+     .form-contro {
+         transition: none
+     }
+ }
+ 
+ .form-contro::-ms-expand {
+     background-color: transparent;
+     border: 0
+ }
+ 
+ .form-contro:focus {
+     color: #495057;
+     background-color: #fff;
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+ }
+ 
+ .form-contro::-webkit-input-placeholder {
+     color: #6c757d;
+     opacity: 1
+ }
+ 
+ .form-contro::-moz-placeholder {
+     color: #6c757d;
+     opacity: 1
+ }
+ 
+ .form-contro:-ms-input-placeholder {
+     color: #6c757d;
+     opacity: 1
+ }
+ 
+ .form-contro::-ms-input-placeholder {
+     color: #6c757d;
+     opacity: 1
+ }
+ 
+ .form-contro::placeholder {
+     color: #6c757d;
+     opacity: 1
+ }
+ 
+ .form-contro:disabled,
+ .form-contro[readonly] {
+     background-color: #e9ecef;
+     opacity: 1
+ }
+ 
+ select.form-contro:not([size]):not([multiple]) {
+     height: calc(2.25rem + 2px)
+ }
+ 
+ select.form-contro:focus::-ms-value {
+     color: #495057;
+     background-color: #fff
+ }
+ 
+ .form-contro-file,
+ .form-contro-range {
+     display: block;
+     width: 100%
+ }
+ 
+ .form-contro-plaintext {
+     display: block;
+     width: 100%;
+     padding-top: .375rem;
+     padding-bottom: .375rem;
+     margin-bottom: 0;
+     line-height: 1.5;
+     color: #212529;
+     background-color: transparent;
+     border: solid transparent;
+     border-width: 1px 0
+ }
+ 
+ .form-contro-plaintext.form-contro-lg,
+ .form-contro-plaintext.form-contro-sm,
+ .input-group-lg>.form-contro-plaintext.form-contro,
+ .input-group-lg>.input-group-append>.form-contro-plaintext.btn,
+ .input-group-lg>.input-group-append>.form-contro-plaintext.input-group-text,
+ .input-group-lg>.input-group-prepend>.form-contro-plaintext.btn,
+ .input-group-lg>.input-group-prepend>.form-contro-plaintext.input-group-text,
+ .input-group-sm>.form-contro-plaintext.form-contro,
+ .input-group-sm>.input-group-append>.form-contro-plaintext.btn,
+ .input-group-sm>.input-group-append>.form-contro-plaintext.input-group-text,
+ .input-group-sm>.input-group-prepend>.form-contro-plaintext.btn,
+ .input-group-sm>.input-group-prepend>.form-contro-plaintext.input-group-text {
+     padding-right: 0;
+     padding-left: 0
+ }
+ 
+ .form-contro-sm,
+ .input-group-sm>.form-contro,
+ .input-group-sm>.input-group-append>.btn,
+ .input-group-sm>.input-group-append>.input-group-text,
+ .input-group-sm>.input-group-prepend>.btn,
+ .input-group-sm>.input-group-prepend>.input-group-text {
+     padding: .25rem .5rem;
+     font-size: .875rem;
+     line-height: 1.5;
+     border-radius: .2rem
+ }
+ 
+ .input-group-sm>.input-group-append>select.btn:not([size]):not([multiple]),
+ .input-group-sm>.input-group-append>select.input-group-text:not([size]):not([multiple]),
+ .input-group-sm>.input-group-prepend>select.btn:not([size]):not([multiple]),
+ .input-group-sm>.input-group-prepend>select.input-group-text:not([size]):not([multiple]),
+ .input-group-sm>select.form-contro:not([size]):not([multiple]),
+ select.form-contro-sm:not([size]):not([multiple]) {
+     height: calc(1.8125rem + 2px)
+ }
+ 
+ .form-contro-lg,
+ .input-group-lg>.form-contro,
+ .input-group-lg>.input-group-append>.btn,
+ .input-group-lg>.input-group-append>.input-group-text,
+ .input-group-lg>.input-group-prepend>.btn,
+ .input-group-lg>.input-group-prepend>.input-group-text {
+     padding: .5rem 1rem;
+     font-size: 1.25rem;
+     line-height: 1.5;
+     border-radius: .3rem
+ }
+ 
+ .input-group-lg>.input-group-append>select.btn:not([size]):not([multiple]),
+ .input-group-lg>.input-group-append>select.input-group-text:not([size]):not([multiple]),
+ .input-group-lg>.input-group-prepend>select.btn:not([size]):not([multiple]),
+ .input-group-lg>.input-group-prepend>select.input-group-text:not([size]):not([multiple]),
+ .input-group-lg>select.form-contro:not([size]):not([multiple]),
+ select.form-contro-lg:not([size]):not([multiple]) {
+     height: calc(2.875rem + 2px)
+ }
+ 
+ .custom-select.is-valid,
+ .form-contro.is-valid,
+ .was-validated .custom-select:valid,
+ .was-validated .form-contro:valid {
+     border-color: #28a745
+ }
+ 
+ .custom-select.is-valid:focus,
+ .form-contro.is-valid:focus,
+ .was-validated .custom-select:valid:focus,
+ .was-validated .form-contro:valid:focus {
+     border-color: #28a745;
+     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
+ }
+ 
+ .custom-select.is-valid~.valid-feedback,
+ .custom-select.is-valid~.valid-tooltip,
+ .form-contro.is-valid~.valid-feedback,
+ .form-contro.is-valid~.valid-tooltip,
+ .was-validated .custom-select:valid~.valid-feedback,
+ .was-validated .custom-select:valid~.valid-tooltip,
+ .was-validated .form-contro:valid~.valid-feedback,
+ .was-validated .form-contro:valid~.valid-tooltip {
+     display: block
+ }
+ 
+ .custom-select.is-invalid,
+ .form-contro.is-invalid,
+ .was-validated .custom-select:invalid,
+ .was-validated .form-contro:invalid {
+     border-color: #dc3545
+ }
