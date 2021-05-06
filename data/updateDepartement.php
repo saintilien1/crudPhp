@@ -1,13 +1,10 @@
 <?php
 include"dbConnection.php";
 if(session_status()===PHP_SESSION_NONE) session_start();
-
-
 $nom            =$_POST["city"];
 $departement    =$_POST["departement"];
 $description    =$_POST["description"];
 $photo          =$_FILES["file"]['name'];
-
 if(empty($photo)){
   $picture = $_SESSION["image"];
 }else {
@@ -45,5 +42,7 @@ if(!empty($nom) || ! empty($departement) || ! empty($description)|| ! empty($pho
      $_SESSION["error"]="All field are require";
      header("location:../insert.php");
  }
+
+
  unset($pdo);
 ?>

@@ -26,6 +26,7 @@
           <th scope="col">Depatement</th>
           <th scope="col">Photo</th>
           <th scope="col">Description</th>
+          <th scope="col">Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -38,7 +39,8 @@
                  $nom          =  $row["nom"];
           			 $image        =  $row["photo"];
           			 $id1          =  $row["id"];
-          			 $departement  =  $row['departement'];
+                 $departement  =  $row['departement'];
+          			 $status       =  $row['status'];
           			 $image_src    =  "data/fileUpload/photo/".$image;
                   if(strlen($description)>20 ){
           				 $description = substr_replace($row["description"], " ... <a class=\"text-uppercase\" href=\"readDescription.php?id=$id1\">Lire Plus</a>", 20);
@@ -54,8 +56,21 @@
                   </td>
                   <td><?php echo $description ?></td>
                   <td>
-                    <a type="button" href="data/delete.php?id=<?=$id1?>&image=<?php echo $image_src ?>" class="btn btn-danger">Delete</a>
-                    <a type="button" href="update.php?id=<?=$id1?>" class="btn btn-warning">Update</a>
+                    <?php
+                       if($status==0){
+                         ?>
+                           <a type="button" href="data/status.php?id=<?=$id1?>&status=<?=$status?>" class="btn btn-danger"><i class="fas fa-thumbs-down"></i></a></td>
+                           <?php
+                       }else {
+                         ?>
+                        <a type="button" href="data/status.php?id=<?=$id1?>&status=<?=$status?>" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a></td>
+                        <?php
+                       }
+                     ?>
+
+                  <td>
+                    <a type="button" href="data/delete.php?id=<?=$id1?>&image=<?php echo $image_src ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    <a type="button" href="update.php?id=<?=$id1?>" style="color:#fff" class="btn btn-warning"><i class="fas fa-pen-square"></i></a>
                   </td>
           			 <?php
           				  }
