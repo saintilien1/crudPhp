@@ -9,14 +9,11 @@ if(session_status()===PHP_SESSION_NONE) session_start();
     $status=1;
   }
    try{
-     $sql="UPDATE `ville` SET `status`=:status WHERE id=$id";
-         $stmt = $pdo->prepare($sql);
-          // Bind parameters to statement
-          $stmt->bindParam(':status',            $status);
+         $stmt = $pdo->prepare("UPDATE `user` SET `status`='".$status."' WHERE `id`='".$id."'");
           // Execute the prepared statement
           $stmt->execute();
-          $_SESSION["msg"]="City change";
-         header("location:../index.php");
+          $_SESSION["msg"]="Status change";
+          header("location:../index.php");
       } catch(PDOException $e){
           die("ERROR: Could not able to execute $sql. " . $e->getMessage());
       }

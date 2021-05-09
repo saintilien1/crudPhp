@@ -1,12 +1,12 @@
 <?php
 include"dbConnection.php";
 if(session_status()===PHP_SESSION_NONE) session_start();
-     $nom            =$_POST["city"];
-     $departement    =$_POST["departement"];
-     $description    =$_POST["description"];
+     $nom            =$_POST["nom"];
+     $email          =$_POST["email"];
+     $phone          =$_POST["phone"];
+     $status         =$_POST["status"];
      $photo          =$_FILES["file"]['name'];
-
-     if(!empty($nom) || ! empty($departement) || ! empty($description)|| ! empty($photo) ){
+     if(!empty($nom) || ! empty($email) || ! empty($phone)|| ! empty($photo) ){
         $uniqId           = uniqid ("city",true);
         $targetfolderph   = "fileUpload/photo/";
         $targetfolderph   = $targetfolderph.$uniqId.basename($_FILES['file']['name']);
@@ -20,16 +20,17 @@ if(session_status()===PHP_SESSION_NONE) session_start();
             header("Location:../insert.php");
         }
       try{
-        $sql="INSERT INTO `ville`(`nom`, `photo`, `departement`, `description`) VALUES (:nom,:photo,:departement,:description)";
+        $sql="INSERT INTO `user`(`nom`, `photo`, `email`, `phone`,`status`) VALUES (:nom,:photo,:email,:phone,:status)";
             $stmt = $pdo->prepare($sql);
              // Bind parameters to statement
              $stmt->bindParam(':nom',                $nom);
              $stmt->bindParam(':photo',          $picture);
-             $stmt->bindParam(':departement',$departement);
-             $stmt->bindParam(':description',$description);
+             $stmt->bindParam(':email',            $email);
+             $stmt->bindParam(':phone',            $phone);
+             $stmt->bindParam(':status',          $status);
              // Execute the prepared statement
              $stmt->execute();
-             $_SESSION["msg"]="New City added";
+             $_SESSION["msg"]="New user Added";
              header("location:../index.php");
          } catch(PDOException $e){
              die("ERROR: Could not able to execute $sql. " . $e->getMessage());

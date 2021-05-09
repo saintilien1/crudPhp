@@ -1,9 +1,9 @@
 <?php
 include"dbConnection.php";
 if(session_status()===PHP_SESSION_NONE) session_start();
-$nom            =$_POST["city"];
-$departement    =$_POST["departement"];
-$description    =$_POST["description"];
+$nom            =$_POST["nom"];
+$email          =$_POST["email"];
+$phone          =$_POST["phone"];
 $photo          =$_FILES["file"]['name'];
 if(empty($photo)){
   $picture = $_SESSION["image"];
@@ -21,19 +21,19 @@ if(empty($photo)){
       header("Location:../insert.php");
   }
 }
-if(!empty($nom) || ! empty($departement) || ! empty($description)|| ! empty($photo) ){
+if(!empty($nom) || ! empty($email) || ! empty($phone)|| ! empty($photo) ){
   $id=$_SESSION["id"];
    try{
-     $sql="UPDATE `ville` SET `nom`=:nom,`photo`=:photo,`departement`=:departement,`description`=:description WHERE id=$id";
+     $sql="UPDATE `user` SET `nom`=:nom,`photo`=:photo,`email`=:email,`phone`=:phone WHERE id=$id";
          $stmt = $pdo->prepare($sql);
           // Bind parameters to statement
-          $stmt->bindParam(':nom',                $nom);
-          $stmt->bindParam(':photo',          $picture);
-          $stmt->bindParam(':departement',$departement);
-          $stmt->bindParam(':description',$description);
+          $stmt->bindParam(':nom',      $nom);
+          $stmt->bindParam(':photo',$picture);
+          $stmt->bindParam(':email',  $email);
+          $stmt->bindParam(':phone',  $phone);
           // Execute the prepared statement
           $stmt->execute();
-          $_SESSION["msg"]="City change";
+          $_SESSION["msg"]="Information User change";
          header("location:../index.php");
       } catch(PDOException $e){
           die("ERROR: Could not able to execute $sql. " . $e->getMessage());
@@ -42,7 +42,5 @@ if(!empty($nom) || ! empty($departement) || ! empty($description)|| ! empty($pho
      $_SESSION["error"]="All field are require";
      header("location:../insert.php");
  }
-
-
  unset($pdo);
 ?>
