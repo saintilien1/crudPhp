@@ -1,8 +1,6 @@
 <?php
   if(session_status()===PHP_SESSION_NONE) session_start();
   include_once"data/dbConnection.php";
-?>
-<?php
  if (isset($_POST['search'])) {
    $response   = '<ul class="list-group mt-3 text-center ">
                    <li class="list-group-item text-danger alert alert-danger" role="alert">No country found!</li>
@@ -41,7 +39,7 @@
         }
       ?>
     </div>
-    <div class="d-flex">
+    <div class="d-flex ftco-animate">
       <a type="button" href="insert.php" class="btn btn-primary mb-4 ml-3">Add new user</a>
       <a type="button" href="status.php" class="btn btn-primary mb-4 ml-3  ">Status</a>
        <form>
@@ -50,7 +48,7 @@
           </div>
         </form>
     </div>
-    <table class="table ml-3 mr-3 mb-5">
+    <table class="table ml-3 mr-3 mb-5 ftco-animate">
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -70,7 +68,7 @@
           			 $email        =  $row["email"];
                  $nom          =  $row["nom"];
           			 $image        =  $row["photo"];
-          			 $id1          =  $row["id"];
+          			 $id           =  $row["id"];
                  $phone        =  $row['phone'];
           			 $status       =  $row['status'];
           			 $image_src    =  "data/fileUpload/photo/".$image;
@@ -83,8 +81,11 @@
                   </td>
                   <td><a href="#" class="btn btn-primary"><i class="far fa-check-circle"></i></a></td>
                   <td>
-                    <a type="button" href="data/delete.php?id=<?=$id1?>&image=<?php echo $image_src ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                    <a type="button" href="update.php?id=<?=$id1?>" style="color:#fff" class="btn btn-warning"><i class="fas fa-pen-square"></i></a>
+                    <div class="d-flex">
+                      <a type="button" href="data/delete.php?id=<?=$id?>&image=<?php echo $image_src ?>" class="btn btn-danger mr-1"><i class="fas fa-trash"></i></a>
+                      <a type="button" href="update.php?id=<?=$id?>" style="color:#fff" class="btn btn-warning mr-1"><i class="fas fa-pen-square"></i></a>
+                      <a type="button" href="read.php?id=<?=$id?>" class="btn btn-primary mr-1"><i class="fab fa-readme"></i></a>
+                    </div>
                   </td>
           			 <?php
           				  }
@@ -93,6 +94,7 @@
           				 }
           				 unset($pdo);
           		 ?>
+
         </tr>
       </tbody>
     </table>

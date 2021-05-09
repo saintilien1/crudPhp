@@ -4,11 +4,11 @@ include"dbConnection.php";
  if(isset($_GET["id"])){
    $image=$_GET["image"];
    try{
-       $sql="DELETE FROM `ville` WHERE id=".$_GET['id']."";
+       $sql="DELETE FROM `user` WHERE id=".$_GET['id']."";
        $stmt = $pdo->prepare($sql);
        unlink($image);
        $stmt->execute();
-       $_SESSION["msg"]="You come to delete a city";
+       $_SESSION["msg"]="You come to delete a user from the list";
        header("location:../index.php");
     } catch(PDOException $e){
          die("ERROR: Could not able to execute $sql. " . $e->getMessage());

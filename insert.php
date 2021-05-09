@@ -27,7 +27,7 @@
       ?>
     </div>
    <a type="button" href="index.php" class="btn btn-primary mb-4 ml-3 mr-3">User List</a>
-   <form class="mr-3 ml-3 mb-5" method="POST" enctype="multipart/form-data" action="data/insertUser.php">
+   <form class="mr-3 ml-3 mb-5 ftco-animate" method="POST" enctype="multipart/form-data" action="data/insertUser.php">
     <div class="form-group">
       <label for="city">Full name</label>
       <input type="text" name="nom" class="form-control" id="city" placeholder="Jhon Doe">

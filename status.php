@@ -44,7 +44,7 @@
                    $nom        =  $row["nom"];
           			   $id         =  $row["id"];
           		    ?>
-                  <tr>
+                  <tr class="ftco-animate">
                   <td class="text-center">
                     <?php
                     if($status==1){
