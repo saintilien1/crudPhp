@@ -6,6 +6,24 @@
 <html lang="en">
   <head>
     <?php include_once"pages/head.php" ?>
+    <style>
+    .center{
+      margin-left: 30% !important;
+      margin-right: 30% !important;
+    }
+    @media screen and (max-width: 600px) {
+      .center{
+        margin-left: 30% !important;
+        margin-right: 30% !important;
+      }
+      .form{
+        width: 90% !important;
+      }
+    }
+    .form{
+      width: 50%;
+    }
+    </style>
   </head>
   <body>
     <div class="text-center mt-5 ftco-animate">
@@ -13,19 +31,19 @@
       <h2>My userList - <small class="form-text text-muted text-primary">Update User.</small></h2>
       <?php
         if(isset($_SESSION['msg'])){
-          echo '<div class="alert alert-success" role="alert">
+          echo '<div class="alert alert-success center" role="alert">
              '.$_SESSION['msg'].'
           </div>';
           unset($_SESSION['msg']);
         }else if($_SESSION['error']){
-          echo '<div class="alert alert-danger" role="alert">
+          echo '<div class="alert alert-danger center" role="alert">
              '.$_SESSION['error'].'
           </div>';
           unset($_SESSION['error']);
         }
       ?>
     </div>
-   <a type="button" href="index.php" class="btn btn-primary mb-4 ml-3 mr-3">User List</a>
+   <a type="button" href="index.php" class="btn btn-primary mb-4 ml-3 mr-3 center">User List</a>
 <?php
 $phone        = "";
 $nom          = "";
@@ -50,7 +68,7 @@ try{
      }
      unset($pdo);
   ?>
-   <form class="mr-3 ml-3 mb-5 ftco-animate" method="POST" enctype="multipart/form-data" action="data/updateUser.php">
+   <form class="mr-3 ml-3 mb-5 ftco-animate center" method="POST" enctype="multipart/form-data" action="data/updateUser.php">
     <div class="form-group">
       <label for="nom">Full Name</label>
       <input type="text" name="nom"  value="<?php echo $nom ?>" class="form-control" id="nom"   placeholder="nom">

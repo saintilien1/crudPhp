@@ -19,6 +19,23 @@
 <html lang="en">
   <head>
     <?php include_once"pages/head.php" ?>
+    <style>
+    .center{
+      margin-left: 35% !important;
+    }
+    @media screen and (max-width: 600px) {
+      .center{
+        margin-left: 20% !important;
+        margin-right: 5% !important;
+      }
+      .form{
+        width: 90% !important;
+      }
+    }
+    .form{
+      width: 50%;
+    }
+    </style>
   </head>
   <body>
     <div class="text-center mt-5 ftco-animate">
@@ -30,8 +47,7 @@
              '.$_SESSION['msg'].'
           </div>';
           unset($_SESSION['msg']);
-        }else if($_SESSION['error']) {
-          // code...
+        }else if($_SESSION['error']){
           echo '<div class="alert alert-danger" role="alert">
              '.$_SESSION['error'].'
           </div>';
@@ -39,7 +55,7 @@
         }
       ?>
     </div>
-    <div class="d-flex ftco-animate">
+    <div class="d-flex ftco-animate center">
       <a type="button" href="insert.php" class="btn btn-primary mb-4 ml-3">Add new user</a>
       <a type="button" href="status.php" class="btn btn-primary mb-4 ml-3  ">Status</a>
        <form>
