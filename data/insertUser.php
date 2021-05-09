@@ -23,7 +23,11 @@ if(session_status()===PHP_SESSION_NONE) session_start();
            header("Location:../insert.php");
        }
      }
-     if($nom!=""|| $email!="" || $phone!=""){
+     if(strlen($nom)==0 || strlen($email)==0|| strlen($phone)==0){
+       $_SESSION["error"]="All fields are require";
+       header("location:../insert.php");
+     }else {
+
        try{
          $sql="INSERT INTO `user`(`nom`, `photo`, `email`, `phone`,`status`) VALUES (:nom,:photo,:email,:phone,:status)";
              $stmt = $pdo->prepare($sql);
@@ -40,9 +44,6 @@ if(session_status()===PHP_SESSION_NONE) session_start();
           } catch(PDOException $e){
               die("ERROR: Could not able to execute $sql. " . $e->getMessage());
           }
-     }else {
-       $_SESSION["error"]="All fields are require";
-       header("location:../insert.php");
     }
 unset($pdo);
 ?>
