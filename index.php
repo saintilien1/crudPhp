@@ -2,16 +2,20 @@
   if(session_status()===PHP_SESSION_NONE) session_start();
   include_once"data/dbConnection.php";
  if (isset($_POST['search'])) {
-   $response   = '<ul class="list-group mt-3 text-center ">
-                   <li class="list-group-item text-danger alert alert-danger" role="alert">No country found!</li>
-                 </ul>';
    $q =  $_POST['q'];
    $stmt = $pdo->query("SELECT nom FROM user WHERE nom LIKE '%$q%' OR email LIKE '%$q%' OR phone LIKE '%$q%'");
-     $response = '<ul class="list-group mt-3">';
-     while ($data = $stmt->fetch()){
-       $response .= '<a type="button" href="#"><li class="list-group-item">'. $data["nom"] . '</li></a>';
+   $num_rows = $stmt->fetchColumn();
+     if($num_rows>0){
+       $response = '<ul class="list-group mt-3">';
+       while ($data = $stmt->fetch()){
+         $response .= '<a type="button" href="#"><li class="list-group-item">'. $data["nom"] . '</li></a>';
+       }
+       $response .= '</ul>';
+     }else {
+       $response= '<ul class="list-group mt-3 text-center ">
+                       <li class="list-group-item text-danger alert alert-danger" role="alert">No user found!</li>
+                     </ul>';
      }
-     $response .= '</ul>';
    exit($response);
  }
 ?>
