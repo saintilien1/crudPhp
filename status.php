@@ -9,7 +9,22 @@
   </head>
   <body>
     <div class="text-center mt-5 ftco-animate">
+      <i class="fas fa-user"></i>
       <h2 class="mb-5">My userList - <small class="form-text text-muted text-primary">status.</small></h2>
+      <?php
+        if(isset($_SESSION['msg'])){
+          echo '<div class="alert alert-success" role="alert">
+             '.$_SESSION['msg'].'
+          </div>';
+          unset($_SESSION['msg']);
+        }else if($_SESSION['error']) {
+          // code...
+          echo '<div class="alert alert-danger" role="alert">
+             '.$_SESSION['error'].'
+          </div>';
+          unset($_SESSION['error']);
+        }
+      ?>
     </div>
    <a type="button" href="index.php" class="btn btn-primary mb-4 ml-3 mr-3">List user</a>
     <table class="table ml-3 mr-3 mb-5">

@@ -24,7 +24,22 @@
   </head>
   <body>
     <div class="text-center mt-5 ftco-animate">
+      <i class="fas fa-user"></i>
       <h2 class="mb-5">My userList- <small class="form-text text-muted text-primary">list.</small></h2>
+      <?php
+        if(isset($_SESSION['msg'])){
+          echo '<div class="alert alert-success" role="alert">
+             '.$_SESSION['msg'].'
+          </div>';
+          unset($_SESSION['msg']);
+        }else if($_SESSION['error']) {
+          // code...
+          echo '<div class="alert alert-danger" role="alert">
+             '.$_SESSION['error'].'
+          </div>';
+          unset($_SESSION['error']);
+        }
+      ?>
     </div>
     <div class="d-flex">
       <a type="button" href="insert.php" class="btn btn-primary mb-4 ml-3">Add new user</a>
@@ -59,11 +74,6 @@
                  $phone        =  $row['phone'];
           			 $status       =  $row['status'];
           			 $image_src    =  "data/fileUpload/photo/".$image;
-                  if(strlen($description)>20 ){
-          				 $description = substr_replace($row["description"], " ... <a class=\"text-uppercase\" href=\"readDescription.php?id=$id1\">Lire Plus</a>", 20);
-          			 }else{
-          				 $description= $row["description"];
-          			 }
           		    ?>
                   <tr>
                   <td><?php echo $nom ?></td>
